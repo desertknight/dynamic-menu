@@ -1,0 +1,26 @@
+{% macro menu_render(menu, is_last) %}
+    {% spaceless %}
+    <li class="tree-item{% if is_last %} tree-item-last{% endif %}">
+        <i class="{% if menu.children|length %}has-child data-tooltip{% else %}no-child{% endif %}{% if is_last %} last-i{% endif %}" data-toggle="collapse" data-target="#menu-{{ menu.id }}" data-title="Toggle menu">&nbsp;</i>
+        <span class="btn btn-xs">
+            <input type="checkbox" name="menu_item[]" value="{{ menu.id }}" />
+        </span> 
+        <a href="{{ path('_menu_form', {'action':'edit','id':menu.id}) }}" class="menu" style="color: {{ menu.color }}">
+            {{ menu.title }}
+        </a>
+        {% if menu.children|length %}
+            <ul id="menu-{{ menu.id }}" data-parent="menu-{{ menu.id }}" class="collapse in">
+                {% for submenu in menu.children %}
+                    {{ _self.menu_render(submenu, loop.last) }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+    {% endspaceless %}
+{% endmacro %}
+
+<ul id="tree-view">
+    {% for menu in menus %}
+        {{ _self.menu_render(menu, loop.last) }}
+    {% endfor %}
+</ul>

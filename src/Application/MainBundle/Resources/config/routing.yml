@@ -1,0 +1,11 @@
+_homepage:
+    path:     /
+    defaults: { _controller: ApplicationMainBundle:Default:index }
+
+_menu_delete:
+    path:     /delete/menus
+    defaults: { _controller: ApplicationMainBundle:Menu:delete }
+    
+_menu_form:
+    path:     /{action}/menu/{id}
+    defaults: { _controller: ApplicationMainBundle:Menu:edit, id: null, action: 'add' }

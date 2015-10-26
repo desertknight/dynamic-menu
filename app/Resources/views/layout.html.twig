@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Dynamic Submenu{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('library/alertify/themes/alertify.core.css') }}" rel="stylesheet" />
+            <link href="{{ asset('library/alertify/themes/alertify.bootstrap.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+        {% endblock %}
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container text-center">
+            <h1 class="jumbotron"><a href="{{ path('_homepage') }}">Dynamic Menu Generator</a></h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body leftbar">
+                            <form action="{{ path('_menu_delete') }}" method="POST" class="remove_menu_items">
+                                <div class="btn-group-sm">
+                                    <a class="btn btn-success" href="{{ path('_menu_form') }}">Add item</a>
+                                    <input type="submit" class="btn btn-danger do_delete delete" disabled="disable" value="Delete items" />
+                                </div> <br />
+                                <div class="menu">
+                                    {{ render(controller('ApplicationMainBundle:Default:listMenu')) }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-8">
+                    {% for type, flashes in app.session.flashbag.all %}
+                        <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {% for messages in flashes %}{{ messages|join('<br />') }}{% endfor %}
+                        </div>
+                    {% endfor %}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('library/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('library/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('library/alertify/alertify.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

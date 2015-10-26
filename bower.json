@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-menu",
+  "homepage": "https://github.com/desertknight/dynamic-menu",
+  "description": "Dynamic Menu Generator",
+  "main": "index.php",
+  "moduleType": [],
+  "keywords": [
+    "dynamic",
+    "menu",
+    "generator"
+  ],
+  "authors": [
+    "Zlatin Hristov <zlatko.2create@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "alertify": "~0.3.10"
+  }
+}

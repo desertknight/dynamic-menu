@@ -1,0 +1,49 @@
+ul#tree-view { 
+    list-style-type: none; 
+    padding-left: 0; 
+}
+ul#tree-view ul { 
+    padding-left: 32px;
+}
+ul#tree-view li.tree-item { 
+    display: block;
+    white-space: nowrap;
+    background-repeat: repeat-y;
+    background-position: -96px 0;
+    background-image: url('../images/32px-tree-view.png'); 
+}
+ul#tree-view li.tree-item a.remove-item {
+    margin-left: 5px;
+}
+ul#tree-view li.tree-item i, ul#tree-view a.menu { 
+    line-height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+}
+ul#tree-view li.tree-item i { 
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: #fff;
+    background-repeat: repeat-y;
+    background-position: -64px 0;
+    background-image: url('../images/32px-tree-view.png');
+}
+ul#tree-view li.tree-item i.no-child { 
+    background-position: 0 -32px;
+}
+ul#tree-view li.tree-item-last i.no-child { 
+    background-position: 0 -32px;
+}
+ul#tree-view li.tree-item i.has-child {
+    background-position: -64px -32px;
+}
+ul#tree-view li.tree-item-last i.has-child { 
+    background-position: -64px -32px;
+}
+ul#tree-view li.tree-item i.has-child.collapsed { 
+    background-position: -32px -32px;
+}
+ul#tree-view li.tree-item-last i.has-child.collapsed { 
+    background-position: -32px 0;
+}
